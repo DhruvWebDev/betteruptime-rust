@@ -19,7 +19,7 @@ fn create_website(Json(data): Json<CraeteWebsiteInput> ) -> Json<CreateWebsiteOu
     let url = data.url;
     // persisit it in the DB
     let response = CreateWebsiteOutput {
-        id: String::from("ID")
+        id: url
     };
 
     Json(response)
