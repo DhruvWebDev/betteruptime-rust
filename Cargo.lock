@@ -32,6 +32,7 @@ version = "0.1.0"
 dependencies = [
  "poem",
  "serde",
+ "store",
  "tokio",
 ]
 
@@ -704,6 +705,10 @@ dependencies = [
  "libc",
  "windows-sys 0.52.0",
 ]
+
+[[package]]
+name = "store"
+version = "0.1.0"
 
 [[package]]
 name = "syn"

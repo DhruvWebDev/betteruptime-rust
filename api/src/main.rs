@@ -2,6 +2,8 @@ use poem::{
     get, handler, listener::TcpListener, middleware::Tracing, post, web::{Json, Path}, EndpointExt, Route, Server
 };
 
+use store::Store;
+
 pub mod request_input;
 pub use request_input::*;
 
@@ -18,8 +20,10 @@ fn create_website(Json(data): Json<CraeteWebsiteInput> ) -> Json<CreateWebsiteOu
     // poem handle the data check or throw error if there is mismathc
     let url = data.url;
     // persisit it in the DB
+    let s = Store{};
+    let id = s.create_website();
     let response = CreateWebsiteOutput {
-        id: url
+        id
     };
 
     Json(response)
