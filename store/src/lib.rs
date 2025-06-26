@@ -1,3 +1,4 @@
+pub mod schema;
 pub struct Store {
 
 }
