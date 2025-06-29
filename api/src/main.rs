@@ -29,12 +29,18 @@ fn create_website(Json(data): Json<CraeteWebsiteInput> ) -> Json<CreateWebsiteOu
     Json(response)
 }
 
+#[handler]
+fn get_prince() -> String {
+    String::from("Hello prince")
+}
+
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
 
     let app = Route::new().at("/website/:website_id", get(get_website))
-        .at("/website", post(create_website));
+                                 .at("/website", post(create_website))
+                                 .at("/prince", get(get_prince));
 
     Server::new(TcpListener::bind("0.0.0.0:3000"))
         .name("hello-world")
